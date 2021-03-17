@@ -5,23 +5,24 @@
     <button @click="addVendor()">{{add}}</button><br>
     <button @click="updateVendor()">{{update}}</button><br>
   </div>
-  <table v-if="viewVariable" border="15">
-    <tr>
-      <th v-for="(item, index) of tableHeaders" v-bind:key="index">{{item}}</th>
-    </tr>
-    <tr v-for="(items, index) in data" :key="index">
-        <td v-for=" (item, index) in items" :key="index">
-          {{ item }}
-        </td>
-    </tr>
-  </table>
+  <Form v-if="addVariable"></Form>
+  <UpdateForm v-if="updateVariable"></UpdateForm>
+  <Table v-if="viewVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
 </template>
 
 <script>
+import Form from './addForm.vue';
+import Table from './Table.vue';
+import UpdateForm from './Update.vue';
 export default {
   name: 'Vendor',
   props: {
     msg: String
+  },
+  components: {
+    Table,
+    Form,
+    UpdateForm
   },
   data(){
     return {
@@ -30,7 +31,9 @@ export default {
       update: 'Update Vendor',
       tableHeaders: [],
       data: [],
-      viewVariable: false
+      viewVariable: false,
+      addVariable: false,
+      updateVariable: false
     }
   },
   methods:{
@@ -46,8 +49,14 @@ export default {
           return console.log('HTTP-Error: ' + response.status);
       }
     },
-    async viewVendors() {
+    viewVendors() {
       this.viewVariable = !this.viewVariable;
+    },
+    addVendor() {
+      this.addVariable = !this.addVariable;
+    },
+    updateVendor() {
+      this.updateVariable = !this.updateVariable;
     }
   },
   mounted: async function() {

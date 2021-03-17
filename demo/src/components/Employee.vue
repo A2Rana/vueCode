@@ -8,26 +8,19 @@
   </div>
   <Form v-if="addVariable"></Form>
   <UpdateForm v-if="updateVariable"></UpdateForm>
-  <table v-if="viewVariable" border="15">
-    <tr>
-      <th v-for="(item, index) of tableHeaders" v-bind:key="index">{{item}}</th>
-    </tr>
-    <tr v-for="(items, index) in data" :key="index">
-        <td v-for=" (item, index) in items" :key="index">
-          {{ item }}
-        </td>
-    </tr>
-  </table>
+  <Table v-if="viewVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
 </template>
 
 <script>
 import Form from './addForm.vue';
+import Table from './Table.vue';
 import UpdateForm from './Update.vue';
 export default {
   name: 'Employee',
   components: {
     Form,
-    UpdateForm
+    UpdateForm,
+    Table
   },
   props: {
     msg: String
