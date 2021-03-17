@@ -1,22 +1,46 @@
 <template>
+  <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table><br><br>
   <button @click="backToExpense()">{{backExpense}}</button>
 </template>
 
 <script>
+  import Table from '../Table';
+
   export default {
     name: 'ViewExpense',
     props:{
       },
+    components:{
+      Table
+    },
     data() {
       return {
-        backExpense:'Back to Expense'
+        backExpense:'Back to Expense',
+        data:[],
+        tableHeaders:[]
       };
     },
     methods:{
+      async getData(param = '') {
+        const response = await fetch('https://fbc.exitest.com/totalExpense' + param);
+        if (response.ok) {
+            const data = await response.json();
+            if (!data.length) {
+                return ('Data is not present!');
+            }
+            return data;
+        } else {
+            return console.log('HTTP-Error: ' + response.status);
+        }
+      },
       backToExpense: function(){
         this.$parent.$data.showExpense=true;
         this.$parent.$data.viewExpense=false;
       }
+    },
+    mounted: async function() {
+        this.data = Object.values(await this.getData());
+        this.tableHeaders = Object.keys(this.data[0]);
     }
   };
 </script>

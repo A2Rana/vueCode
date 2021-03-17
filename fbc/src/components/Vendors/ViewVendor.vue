@@ -1,22 +1,46 @@
 <template>
+  <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table><br><br>
   <button @click="backToVendor()">{{backVendor}}</button>
 </template>
 
 <script>
+  import Table from '../Table.vue';
+
   export default {
     name: 'ViewVendor',
     props:{
-      },
+    },
+    components:{
+      Table
+    },
     data() {
       return {
-        backVendor:'Back to Vendor'
+        backVendor:'Back to Vendor',
+        data:[],
+        tableHeaders:[]
       };
     },
     methods:{
+      async getData(param = '') {
+        const response = await fetch('https://fbc.exitest.com/vendor' + param);
+        if (response.ok) {
+            const data = await response.json();
+            if (!data.length) {
+                return ('Data is not present!');
+            }
+            return data;
+        } else {
+            return console.log('HTTP-Error: ' + response.status);
+        }
+      },
       backToVendor: function(){
         this.$parent.$data.showVendor=true;
         this.$parent.$data.viewVendor=false;
       }
+    },
+    mounted: async function() {
+        this.data = Object.values(await this.getData());
+        this.tableHeaders = Object.keys(this.data[0]);
     }
   };
 </script>

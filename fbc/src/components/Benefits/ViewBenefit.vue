@@ -1,22 +1,46 @@
 <template>
+  <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table><br><br>
   <button @click="backToBenefit()">{{backBenefit}}</button>
 </template>
 
 <script>
+  import Table from '../Table';
+
   export default {
     name: 'ViewBenefit',
     props:{
-      },
+    },
+    components :{
+      Table
+    },
     data() {
       return {
-        backBenefit:'Back to Benefit'
+        backBenefit:'Back to Benefit',
+        data:[],
+        tableHeaders:[]
       };
     },
     methods:{
+      async getData(param = '') {
+        const response = await fetch('https://fbc.exitest.com/benefit' + param);
+        if (response.ok) {
+            const data = await response.json();
+            if (!data.length) {
+                return ('Data is not present!');
+            }
+            return data;
+        } else {
+            return console.log('HTTP-Error: ' + response.status);
+        }
+      },
       backToBenefit: function(){
         this.$parent.$data.showBenefit=true;
         this.$parent.$data.viewBenefit=false;
       }
+    },
+    mounted: async function() {
+        this.data = Object.values(await this.getData());
+        this.tableHeaders = Object.keys(this.data[0]);
     }
   };
 </script>

@@ -1,27 +1,54 @@
 <template>
+  <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table><br><br>
   <button @click="backToEmployee()">{{backEmployee}}</button>
 </template>
 
 <script>
+import Table from '../Table';
+
   export default {
     name: 'ViewEmployee',
     props:{
       },
+    components:{
+      Table
+    },
     data() {
       return {
-        backEmployee:'Back to Employee'
+        backEmployee:'Back to Employee',
+        data:[],
+        tableHeaders:[]
       };
     },
     methods:{
+      async getData(param = '') {
+        const response = await fetch('https://fbc.exitest.com/employee' + param);
+        if (response.ok) {
+            const data = await response.json();
+            if (!data.length) {
+                return ('Data is not present!');
+            }
+            return data;
+        } else {
+            return console.log('HTTP-Error: ' + response.status);
+        }
+      },
       backToEmployee: function(){
         this.$parent.$data.showEmployee=true;
         this.$parent.$data.viewEmployee=false;
       }
-    }
+    },
+    mounted: async function() {
+    this.data = Object.values(await this.getData());
+    this.tableHeaders = Object.keys(this.data[0]);
+  }
   };
 </script>
 
 <style scoped>
+  table{
+    display:inline-block;
+  }
   h3 {
     margin: 40px 0 0;
   }

@@ -1,22 +1,46 @@
 <template>
+  <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table><br><br>
   <button @click="backToOverhead()">{{backOverhead}}</button>
 </template>
 
 <script>
+  import Table from '../Table';
+
   export default {
     name: 'ViewOverhead',
     props:{
-      },
+    },
+    components:{
+      Table
+    },
     data() {
       return {
-        backOverhead:'Back to Overhead'
+        backOverhead:'Back to Overhead',
+        data:[],
+        tableHeaders:[]
       };
     },
     methods:{
+      async getData(param = '') {
+        const response = await fetch('https://fbc.exitest.com/overhead' + param);
+        if (response.ok) {
+            const data = await response.json();
+            if (!data.length) {
+                return ('Data is not present!');
+            }
+            return data;
+        } else {
+            return console.log('HTTP-Error: ' + response.status);
+        }
+      },
       backToOverhead: function(){
         this.$parent.$data.showOverhead=true;
         this.$parent.$data.viewOverhead=false;
       }
+    },
+    mounted: async function() {
+        this.data = Object.values(await this.getData());
+        this.tableHeaders = Object.keys(this.data[0]);
     }
   };
 </script>
