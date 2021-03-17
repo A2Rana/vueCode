@@ -5,23 +5,18 @@
     <button @click="addOverhead()">{{add}}</button><br>
     <button @click="expenseOverhead()">{{expense}}</button><br>
   </div>
-  <table v-if="viewVariable" border="15">
-    <tr>
-      <th v-for="(item, index) of tableHeaders" v-bind:key="index">{{item}}</th>
-    </tr>
-    <tr v-for="(items, index) in data" :key="index">
-        <td v-for=" (item, index) in items" :key="index">
-          {{ item }}
-        </td>
-    </tr>
-  </table>
+  <Table v-if="viewVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
 </template>
 
 <script>
+import Table from './Table.vue';
 export default {
   name: 'Overhead',
   props: {
     msg: String
+  },
+  components: {
+    Table
   },
   data(){
     return {

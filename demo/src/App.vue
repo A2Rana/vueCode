@@ -7,6 +7,7 @@
       <Vendor msg="Vendor Component" />
       <Benefit msg="Benefit Component" />
       <Overhead msg="Overhead Component" />
+      <Expense msg="Expense Component" />
       <app-footer msg="Copyright 2021 EX2India!" />
     </div>
 </template>
@@ -19,6 +20,7 @@ import Employee from './components/Employee.vue';
 import Vendor from './components/Vendor.vue';
 import Benefit from './components/Benefit.vue';
 import Overhead from './components/Overhead.vue';
+import Expense from './components/Expense.vue';
 import Footer from './components/Footer.vue';
 
 export default {
@@ -36,6 +38,7 @@ export default {
         Benefit,
         Overhead,
         Login,
+        Expense
     },
 };
 </script>
