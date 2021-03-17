@@ -24,15 +24,13 @@
 <script>
 export default {
   name: 'Login',
-  props: {
-
-  },
   data(){
     return {}
   },
   methods:{
     allowUser() {
       this.$parent.$data.onlyLogin = false;
+      this.$parent.$data.show = true;
     }
   },
   mounted: function() {

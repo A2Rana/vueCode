@@ -4,49 +4,59 @@
   <button @click="viewBenefits()">{{view}}</button><br>
   <button @click="addBenefit()">{{add}}</button><br>
   <button @click="expenseBenefit()">{{expense}}</button><br>
+  <button @click="backToMain()">{{main}}</button><br>
 </div>
-<Table v-if="viewVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+<Table v-if="viewVariable || expenseVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+<div v-if="addVariable">
+  <form method="POST" action="https://fbc.exitest.com/vendor/addFacility">
+    <input type="text" id="fname" name="FacilityName" required="" placeholder="Facility Name..">
+    <br>
+    <input type="text" id="lname" name="FacilityDescription" required="" placeholder="Facility Description..">
+    <br>
+    <label>Facility Type: </label>
+    <select name="FacilityType" required="">
+      <option value="B">Benefit</option>
+      <option value="O">Overhead</option>
+    </select>
+    <br>
+    <label>Do you want to add vendor for this Facility?</label>
+    <select name="Choice" required="">
+      <option value="YES">Yes</option>
+      <option value="NO">No</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="GO!">
+  </form>
+</div>
+<Filter v-if="expenseVariable" v-bind:msg="msgg"/>
 
-<form method="POST" action="https://fbc.exitest.com/vendor/addFacility">
-  <input type="text" id="fname" name="FacilityName" required="" placeholder="Facility Name..">
-  <br>
-  <input type="text" id="lname" name="FacilityDescription" required="" placeholder="Facility Description..">
-  <br>
-  <label>Facility Type: </label>
-  <select name="FacilityType" required="">
-    <option value="B">Benefit</option>
-    <option value="O">Overhead</option>
-  </select>
-  <br>
-  <label>Do you want to add vendor for this Facility?</label>
-  <select name="Choice" required="">
-    <option value="YES">Yes</option>
-    <option value="NO">No</option>
-  </select>
-  <br>
-  <br>
-  <input type="submit" value="GO!">
-</form>
 </template>
 
 <script>
 import Table from './Table.vue';
+import Filter from './Filter.vue';
 export default {
   name: 'Benefit',
   props: {
     msg: String
   },
   components: {
-    Table
+    Table,
+    Filter
   },
   data() {
     return {
       view: 'View Benefit',
       add: 'Add Benefit',
       expense: 'Expenses due to Benefits',
+      main: 'Back to Main',
       tableHeaders: [],
       data: [],
-      viewVariable: false
+      viewVariable: false,
+      addVariable: false,
+      expenseVariable: false,
+      msgg: 'Filter Benefit Expenses according to the year!',
     }
   },
   methods: {
@@ -55,15 +65,25 @@ export default {
       if (response.ok) {
         let data = await response.json();
         if (!data.length) {
-          return ('Data is not present!');
+          return 'Data is not present!';
         }
         return data;
       } else {
         return console.log('HTTP-Error: ' + response.status);
       }
     },
-    async viewBenefits() {
+    viewBenefits() {
       this.viewVariable = !this.viewVariable;
+    },
+    addBenefit() {
+      this.addVariable = !this.addVariable;
+    },
+    async expenseBenefit() {
+      this.expenseVariable = !this.expenseVariable;
+    },
+    backToMain: function() {
+      this.$parent.$data.show = true;
+      this.$parent.$data.viewBenefit = false;
     }
   },
   mounted: async function() {

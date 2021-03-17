@@ -4,15 +4,18 @@
     <button @click="viewVendors()">{{view}}</button><br>
     <button @click="addVendor()">{{add}}</button><br>
     <button @click="updateVendor()">{{update}}</button><br>
+    <button @click="backToMain()">{{main}}</button>
   </div>
   <Form v-if="addVariable"></Form>
   <UpdateForm v-if="updateVariable"></UpdateForm>
   <Table v-if="viewVariable" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+  <Filter v-if="viewVariable" v-bind:msg="msgg" v-bind:placehold="placehold" />
 </template>
 
 <script>
 import Form from './addForm.vue';
 import Table from './Table.vue';
+import Filter from './Filter.vue';
 import UpdateForm from './Update.vue';
 export default {
   name: 'Vendor',
@@ -22,18 +25,22 @@ export default {
   components: {
     Table,
     Form,
-    UpdateForm
+    UpdateForm,
+    Filter
   },
   data(){
     return {
       view: 'View Vendor',
       add: 'Add Vendor',
       update: 'Update Vendor',
+      main: 'Back to Main',
       tableHeaders: [],
       data: [],
       viewVariable: false,
       addVariable: false,
-      updateVariable: false
+      updateVariable: false,
+      msgg: 'Filter By VendorID',
+      placehold: ''
     }
   },
   methods:{
@@ -41,9 +48,6 @@ export default {
       const response = await fetch('https://fbc.exitest.com/vendor' + param);
       if (response.ok) {
           let data = await response.json();
-          if (!data.length) {
-              return ('Data is not present!');
-          }
           return data;
       } else {
           return console.log('HTTP-Error: ' + response.status);
@@ -57,11 +61,18 @@ export default {
     },
     updateVendor() {
       this.updateVariable = !this.updateVariable;
+    },
+    backToMain() {
+      this.$parent.$data.show=true;
+      this.$parent.$data.viewVendor=false;
     }
   },
   mounted: async function() {
     this.data = Object.values(await this.getData());
-    this.tableHeaders = Object.keys(this.data[0]);
+    if (this.data.length)
+      this.tableHeaders = Object.keys(this.data[0]);
+    else
+      this.tableHeaders = ['Data is not present!'];
   }
 };
 </script>
