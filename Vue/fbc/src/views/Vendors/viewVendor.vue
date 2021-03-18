@@ -31,7 +31,7 @@ export default {
             }
         },
     },
-    mounted: async function () {
+    async mounted () {
         this.data = Object.values(await this.getData());
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);

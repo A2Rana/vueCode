@@ -26,6 +26,9 @@ export default {
             if (this.msg.indexOf('Get') >= 0 && this.msg.indexOf('Benefits') >= 0) {
                 this.mainParam = '/employee/';
             }
+            if (this.msg.indexOf('expenses') >= 0 && this.msg.indexOf('Employee') >= 0) {
+                this.mainParam = '';
+            }
 
             const inputID = document.querySelector('input');
             const param = inputID.value ? this.mainParam + inputID.value : inputID.value;
