@@ -78,13 +78,10 @@ export default {
   },
   data(){
     return {
-      
-    }
+
+    };
   },
   methods:{
-  },
-  mounted: function() {
-
   }
 };
 </script>
