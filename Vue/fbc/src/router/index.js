@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [

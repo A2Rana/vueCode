@@ -15,9 +15,6 @@ export default {
 </script>
 
 <style scoped>
-table {
-    display: inline-block;
-}
 h1 {
     background: -webkit-repeating-radial-gradient(yellow, white);
     padding: 15px;
