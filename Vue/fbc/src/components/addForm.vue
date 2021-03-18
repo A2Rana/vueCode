@@ -9,7 +9,7 @@
         <option value="Mr">Mr</option>
         <option value="Ms">Ms</option>
         <option value="Mrs">Mrs</option>
-        <option value="Dr">Mrs</option>
+        <option value="Dr">Dr</option>
     </select>
     <br /><label>Gender</label>
     <select id="Gender" required="" name="Gender">
