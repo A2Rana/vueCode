@@ -1,5 +1,6 @@
 <template>
     <h1>Expenses for Employees</h1>
+    <h2>Employee Id : {{id}}</h2>
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
     <Filter v-bind:msg="msg" />
 </template>
@@ -20,10 +21,12 @@ export default {
             data: [],
             tableHeaders: [],
             ctcdata: [],
+            id:Number
         };
     },
     methods: {
         async getData(eID, year = 2021) {
+            this.id=eID;
             const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
             if (response.ok) {
@@ -51,3 +54,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+    table{
+        display: inline-block;
+    }
+</style>

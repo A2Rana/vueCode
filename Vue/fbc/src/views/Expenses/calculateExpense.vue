@@ -1,5 +1,5 @@
 <template>
-    <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+    <Table v-if="show" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
     <input type="text" id="year" name="Year" required="" placeholder="Enter Year.." />
     <br />
     <input type="text" id="profit" name="per" required="" placeholder="Profit Percentange.." />
@@ -19,13 +19,12 @@ export default {
         return {
             tableHeaders: [],
             data: [],
+            show:false
         };
     },
     methods: {
         async getData(url) {
-            console.log('heyaaaa');
             const response = await fetch(url);
-            console.log('2');
             if (response.ok) {
                 console.log('ok');
                 const data = await response.json();
@@ -43,8 +42,8 @@ export default {
             console.log(this.data, url, 'going to fetch');
             this.data = Object.values(await this.getData(url));
             this.tableHeaders = ['Total Expense'];
-            console.log(this.data, this.tableHeaders);
+            this.show=true;
         },
-    },
+    }
 };
 </script>
