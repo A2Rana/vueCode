@@ -1,3 +1,63 @@
+table {
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    margin: 5px;
+    display: table;
+    padding: 2px 2px 2px 2px;
+    color: #1ebb9c;
+}
+td,
+th {
+    padding: 10px;
+}
+
+/* Background-color of the odd rows */
+tr:nth-child(odd) {
+    background-color: #303d58;
+}
+
+/* Background-color of the even rows */
+tr:nth-child(even) {
+    background-color: #243255;
+}
+
+th {
+    background-color: #1f2739;
+}
+
+td:first-child {
+    color: #fb667a;
+}
+
+tr:hover {
+    background-color: #464a52;
+    -webkit-box-shadow: 0 6px 6px -6px #0e1119;
+    -moz-box-shadow: 0 6px 6px -6px #0e1119;
+    box-shadow: 0 6px 6px -6px #0e1119;
+}
+
+td:hover {
+    background-color: #fff842;
+    color: #403e10;
+    font-weight: bold;
+
+    box-shadow: #7f7c21 -1px 1px, #7f7c21 -2px 2px, #7f7c21 -3px 3px, #7f7c21 -4px 4px, #7f7c21 -5px 5px, #7f7c21 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+    .container td:nth-child(4),
+    .container th:nth-child(4) {
+        display: none;
+    }
+}
+
 input,
 select {
     padding: 10px;
@@ -14,6 +74,7 @@ label {
 }
 input[type='submit'] {
     background: #1ebb9c;
+    margin-bottom: 40px;
 }
 body {
     background: #eff8ff;
@@ -67,7 +128,7 @@ li:hover {
 
 button {
     display: inline-block;
-    padding: 12px 12px 12px 12px;
+    padding: px 12px 12px 12px;
     background: rgb(220, 220, 220);
     font-weight: bold;
     color: rgb(120, 120, 120);
@@ -77,6 +138,12 @@ button {
     cursor: pointer;
     transition: ease 0.3s;
     font-size: medium;
+    width: 30%;
+    height: 40px;
+    background: dodgerblue;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.67, 0.17, 0.4, 0.83);
+    margin: 10px;
 }
 button:hover {
     background: #8bc34a;
