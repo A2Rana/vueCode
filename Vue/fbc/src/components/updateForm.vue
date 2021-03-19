@@ -1,6 +1,6 @@
 <template>
     <form id="updateEmployeeForm" method="POST" action="https://fbc.exitest.com/employee/updateEmployee">
-    <label for="First Name" id="First Name">First Name</label><br />
+    <label for="First Name" id="First Name" v-bind:class="required">First Name</label><br />
     <input id="First Name" type="text" required="" value="Aakash" readonly="" style="margin-top: 4px" />
     <label for="Middle Name" id="Middle Name">Middle Name</label><br />
     <input id="Middle Name" type="text" value="" readonly="" style="margin-top: 4px" />
