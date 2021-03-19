@@ -41,8 +41,4 @@ export default {
 };
 </script>
 
-<style scoped>
-table {
-    display: inline-block;
-}
-</style>
+<style scoped></style>
