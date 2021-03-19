@@ -150,6 +150,6 @@ button:hover {
     color: #ffffff;
 }
 
-.required input:after { content:"*";
-                        color : red ;
-                    }
+.required:after{ content:" *";
+                color : red ;
+               }
