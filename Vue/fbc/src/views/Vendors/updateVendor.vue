@@ -1,22 +1,22 @@
 <template>
     <div v-show="start">
         <label for="VendorID"></label>
-        <input v-model="vendorID" placeholder="Enter the EmployeeID" />
+        <input v-model="vendorID" placeholder="Enter the VendorID" />
         <button @click="getVendorId()">Go!</button>
     </div>
     <div v-if="show">
         <h2>Update your details..</h2>
-        <UpdateForm v-bind:data="data"></UpdateForm>
+        <UpdateVendorForm v-bind:data="data"></UpdateVendorForm>
     </div>
 </template>
 
 <script>
-import UpdateForm from '@/components/updateForm';
+import UpdateVendorForm from '@/components/updateVendorForm';
 
 export default {
     name: 'UpdateEmployee',
     components: {
-        UpdateForm,
+        UpdateVendorForm,
     },
     data() {
         return {
@@ -32,7 +32,7 @@ export default {
                 return alert('Enter the Vendor ID');
             }
             if (isNaN(Number(this.vendorID))) {
-                return alert('Enter valid employee ID');
+                return alert('Enter valid vendor ID');
             }
             this.data = await fetch(`https://fbc.exitest.com/vendor/allVendorDetails/id=${this.vendorID}`);
             this.data = (await this.data.json())[0];
