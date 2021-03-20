@@ -1,6 +1,6 @@
 <template>
     <form id="updateEmployeeForm" method="POST" action="https://fbc.exitest.com/employee/updateEmployee">
-        <label for="First Name" id="First Name">First Name</label>
+        <label for="First Name" id="First Name" v-bind:class="{ required: true }">First Name</label>
         <input id="First Name" type="text" required="" v-bind:value="data.FirstName" readonly="" style="margin-top: 4px" /><br />
         <label for="Middle Name" id="Middle Name">Middle Name</label>
         <input id="Middle Name" type="text" v-bind:value="data.MiddleName" readonly="" style="margin-top: 4px" /><br />
@@ -78,7 +78,6 @@
         <input type="submit" value="Submit" /><br />
     </form>
 </template>
-
 <script>
 export default {
     name: 'UpdateForm',
@@ -90,7 +89,6 @@ export default {
     },
 };
 </script>
-
 <style scoped>
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

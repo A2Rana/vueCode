@@ -149,3 +149,7 @@ button:hover {
     background: #8bc34a;
     color: #ffffff;
 }
+
+.required:after{ content:" *";
+                color : red ;
+               }
