@@ -20,9 +20,6 @@ export default {
     components: {
         Login,
     },
-    beforeUpdate() {
-        this.showLogin = false;
-    },
 };
 </script>
 

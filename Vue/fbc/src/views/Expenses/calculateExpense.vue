@@ -1,5 +1,5 @@
 <template>
-    <Table v-if="show" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+    <h2 v-if="show"> Estimated Expense for {{year}} at profit percentange {{per}}%: {{data[0]}}</h2>
     <input type="text" id="year" name="Year" required="" placeholder="Enter Year.." />
     <br />
     <input type="text" id="profit" name="per" required="" placeholder="Profit Percentange.." />
@@ -9,41 +9,44 @@
 </template>
 
 <script>
-import Table from '@/components/Table.vue';
+
 export default {
     name: 'Calculate Expense',
-    components: {
-        Table,
-    },
     data() {
         return {
-            tableHeaders: [],
             data: [],
+            year :2020,
+            per:5,
             show:false
         };
     },
     methods: {
-        async getData(url) {
-            const response = await fetch(url);
+        async getData(year,per) {
+            if(year){
+                this.year = year;
+                this.per = per;
+            }
+            const response = await fetch(`https://fbc.exitest.com/employee/expenseDetails/year=${this.year}/profit=${this.per}`);
             if (response.ok) {
-                console.log('ok');
                 const data = await response.json();
-                console.log(data, 'returning');
-                return data;
+                return Object.values(data);
             } else {
                 return console.log('HTTP-Error: ' + response.status);
             }
         },
         async doCalculations() {
-            const year = document.querySelector('#year').value;
-            const per = document.querySelector('#profit').value;
-            console.log(year, per);
-            const url = `https://fbc.exitest.com/employee/expenseDetails/year=${year}/profit=${per}`;
-            console.log(this.data, url, 'going to fetch');
-            this.data = Object.values(await this.getData(url));
-            this.tableHeaders = ['Total Expense'];
-            this.show=true;
+            const year = parseInt(document.getElementById('year').value,10);
+            const per = parseInt(document.getElementById('profit').value,10);
+            this.data = await this.getData(year,per);
+            this.show = true;
         },
-    }
+    },
 };
 </script>
+
+<style scoped>
+    table{
+        display:inline-block;
+    }
+</style>
+
