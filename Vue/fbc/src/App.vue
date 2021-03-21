@@ -1,6 +1,5 @@
 <template>
-    <Login v-if="showLogin" />
-    <div v-else id="nav">
+    <div id="nav">
         <router-link to="/">Home</router-link> | <router-link to="/employee">Employee</router-link> | <router-link to="/vendor">Vendor</router-link> |
         <router-link to="/benefit">Benefit</router-link> | <router-link to="/overhead">Overhead</router-link> |
         <router-link to="/expense">Expense</router-link>
@@ -9,21 +8,7 @@
 </template>
 
 <script>
-import Login from './components/Login';
-
-export default {
-    data() {
-        return {
-            showLogin: true,
-        };
-    },
-    components: {
-        Login,
-    },
-    beforeUpdate() {
-        this.showLogin = false;
-    },
-};
+export default {};
 </script>
 
 <style>

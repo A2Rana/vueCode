@@ -26,7 +26,7 @@ export default {
     name: 'Login',
     methods: {
         allowUser() {
-            this.$parent.$data.showLogin = false;
+            this.$router.push('/login');
         },
     },
 };
