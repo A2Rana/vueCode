@@ -9,22 +9,22 @@
 </template>
 
 <script>
-    import Table from '../../components/Table.vue';
+import Table from '../../components/Table.vue';
 
 export default {
     name: 'Calculate Expense',
-    components:{
-        Table
+    components: {
+        Table,
     },
     data() {
         return {
             data: [],
-            show:false,
-            tableHeaders:[]
+            show: false,
+            tableHeaders: [],
         };
     },
     methods: {
-        async getData(year,per) {
+        async getData(year, per) {
             const response = await fetch(`https://fbc.exitest.com/employee/expenseDetails/year=${year}/profit=${per}`);
             if (response.ok) {
                 const data = await response.json();
@@ -34,9 +34,9 @@ export default {
             }
         },
         async doCalculations() {
-            const year = parseInt(document.getElementById('year').value,10);
-            const per = parseInt(document.getElementById('profit').value,10);
-            this.data[0] = await this.getData(year,per);
+            const year = parseInt(document.getElementById('year').value, 10);
+            const per = parseInt(document.getElementById('profit').value, 10);
+            this.data[0] = await this.getData(year, per);
             this.tableHeaders = ['Total Expense'];
             this.show = true;
         },
@@ -45,9 +45,8 @@ export default {
 </script>
 
 <style scoped>
-    table{
-        display:inline-block;
-        width: 26%;
-    }
+table {
+    display: inline-block;
+    width: 26%;
+}
 </style>
-

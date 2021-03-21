@@ -39,14 +39,14 @@ export default {
     async mounted() {
         this.data = Object.values(await this.getData());
         this.tableHeaders = Object.keys(this.data[0]);
-        this.data.forEach(item => this.yearArray.push(item.Year));
+        this.data.forEach((item) => this.yearArray.push(item.Year));
     },
 };
 </script>
 
 <style scoped>
-    table{
-        display:inline-block;
-        width: 86%;
-    }
+table {
+    display: inline-block;
+    width: 86%;
+}
 </style>

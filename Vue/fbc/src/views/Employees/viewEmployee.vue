@@ -1,6 +1,8 @@
 <template>
-    <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" v-bind:message="message"></Filter>
+    <div>
+        <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+        <Filter v-bind:msg="msg" v-bind:message="message"></Filter>
+    </div>
 </template>
 
 <script>
@@ -16,8 +18,8 @@ export default {
         return {
             data: [],
             tableHeaders: [],
-            msg: 'Filter Employees by ID',
-            message:'Enter Employee Id'
+            msg: 'Filter Employees by ID:',
+            message: 'Enter Employee Id',
         };
     },
     methods: {

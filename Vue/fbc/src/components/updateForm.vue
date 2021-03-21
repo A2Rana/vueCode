@@ -12,7 +12,7 @@
             <option value="Ms">Ms</option>
             <option value="Mrs">Mrs</option>
         </select>
-        <br /><br />
+        <br />
         <label for="Email" id="Email">Email</label>
         <input id="Email" type="email" required="" v-bind:value="data.Email" readonly="" /><br />
         <label for="Joining Date" id="Joining Date">Joining Date</label>
@@ -29,7 +29,8 @@
             <option value="0">No</option>
             <option value="1">Yes</option>
         </select>
-        <br /><br /><label for="Street Address 1" id="Street Address 1">Street Address 1</label>
+        <br />
+        <label for="Street Address 1" id="Street Address 1">Street Address 1</label>
         <input id="Street Address 1" type="text" required="" v-bind:value="data.StreetAddress1" style="margin-top: 4px" /><br />
         <label for="Street Address 2" id="Street Address 2">Street Address 2</label>
         <input id="Street Address 2" type="text" v-bind:value="data.StreetAddress2" style="margin-top: 4px" /><br />
@@ -42,23 +43,22 @@
         <label for="State" id="State">State</label>
         <input id="State" type="text" required="" v-bind:value="data.State" style="margin-top: 4px" /><br />
         <label for="Country" id="Country">Country</label>
-        <br /><br /><input id="Country" type="text" required="" v-bind:value="data.Country" style="margin-top: 4px" /><br />
+        <input id="Country" type="text" required="" v-bind:value="data.Country" style="margin-top: 4px" /><br />
         <label id="Is Address Permanent">Is Address Permanent</label>
-        <br /><br />
+
         <select id="Is Address Permanent" v-bind:value="data.IsPermanent" required="">
             <option value="0">No</option>
             <option value="1">Yes</option>
         </select>
-        <br /><br />
+
         <label for="Office Number" id="Office Number">Office Number</label>
         <input id="Office Number" type="number" required="" v-bind:value="data.Office" style="margin-top: 4px" /><br />
         <label for="Mobile Number" id="Mobile Number">Mobile Number</label>
         <input id="Mobile Number" type="number" required="" v-bind:value="data.Mobile" style="margin-top: 4px" /><br />
         <label for="LandLine Number" id="LandLine Number">LandLine Number</label>
-        <br /><br />
         <input id="LandLine Number" type="number" v-bind:value="data.LandLine" style="margin-top: 4px" /><br />
         <label for="Bank Name" id="Bank Name">Bank Name</label>
-        <br /><br /><input id="Bank Name" type="text" required="" v-bind:value="data.BankName" style="margin-top: 4px" /><br />
+        <input id="Bank Name" type="text" required="" v-bind:value="data.BankName" style="margin-top: 4px" /><br />
         <label for="Account No." id="Account No.">Account No.</label
         ><input id="Account No." type="number" required="" v-bind:value="data.AccountNo" style="margin-top: 4px" /><br />
         <label for="IFSC" id="IFSC">IFSC</label>
@@ -83,9 +83,6 @@ export default {
     name: 'UpdateForm',
     props: {
         data: Array,
-    },
-    mounted() {
-        console.log(this.data);
     },
 };
 </script>

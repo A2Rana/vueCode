@@ -1,7 +1,9 @@
 <template>
-    <h2>{{ msg }}</h2>
-    <input v-model.lazy="inputID" :placeholder=message />
-    <button @click="getID()" type="button">Go!</button>
+    <div>
+        <h2>{{ msg }} {{ valueID }}</h2>
+        <input v-model.lazy="inputID" :placeholder="message" />
+        <button @click="getID()" type="button">Go!</button>
+    </div>
 </template>
 
 <script>
@@ -9,12 +11,13 @@ export default {
     name: 'Filter',
     props: {
         msg: String,
-        message:String
+        message: String,
     },
     data() {
         return {
             mainParam: '/id=',
             inputID: '',
+            valueID: '',
         };
     },
     methods: {
@@ -38,6 +41,7 @@ export default {
             } else {
                 this.$parent.$data.tableHeaders = ['Data is not present!'];
             }
+            this.valueID = this.inputID;
             this.inputID = '';
         },
     },
