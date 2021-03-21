@@ -8,7 +8,22 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {};
+=======
+import Login from './components/Login';
+
+export default {
+    data() {
+        return {
+            showLogin: true,
+        };
+    },
+    components: {
+        Login,
+    },
+};
+>>>>>>> 57de777d2f39c3fa6aec2166ed94529fab0cd04a
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" />
+    <Filter v-bind:msg="msg" v-bind:message="message" />
 </template>
 
 <script>
@@ -17,7 +17,8 @@ export default {
         return {
             data: [],
             tableHeaders: [],
-            msg: 'Filter Benefit Expenses according to the year!',
+            msg: 'Filter Benefit Expenses according to the year :',
+            message:'Enter Year'
         };
     },
     methods: {

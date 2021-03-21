@@ -1,6 +1,6 @@
 <template>
-    <h2>{{ msg }}: {{ valueID }}</h2>
-    <input v-model.lazy="inputID" placeholder="Enter ID" />
+    <h2>{{ msg }}</h2>
+    <input v-model.lazy="inputID" :placeholder=message />
     <button @click="getID()" type="button">Go!</button>
 </template>
 
@@ -9,17 +9,16 @@ export default {
     name: 'Filter',
     props: {
         msg: String,
+        message:String
     },
     data() {
         return {
             mainParam: '/id=',
             inputID: '',
-            valueID: '',
         };
     },
     methods: {
         async getID() {
-            this.valueID = this.inputID;
             if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                 this.mainParam = '/expense/year=';
             }

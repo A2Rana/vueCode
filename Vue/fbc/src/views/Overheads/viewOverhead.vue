@@ -42,5 +42,6 @@ export default {
 <style scoped>
     table{
         display: inline-block;
+        width: 69%;
     }
 </style>
