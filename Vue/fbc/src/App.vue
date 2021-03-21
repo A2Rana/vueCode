@@ -1,10 +1,13 @@
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link> | <router-link to="/employee">Employee</router-link> | <router-link to="/vendor">Vendor</router-link> |
-        <router-link to="/benefit">Benefit</router-link> | <router-link to="/overhead">Overhead</router-link> |
-        <router-link to="/expense">Expense</router-link>
+    <div>
+        <div id="nav">
+            <router-link to="/">Home</router-link> | <router-link to="/employee">Employee</router-link> |
+            <router-link to="/vendor">Vendor</router-link> | <router-link to="/benefit">Benefit</router-link> |
+            <router-link to="/overhead">Overhead</router-link> |
+            <router-link to="/expense">Expense</router-link>
+        </div>
+        <router-view />
     </div>
-    <router-view />
 </template>
 
 <script>
@@ -21,7 +24,7 @@ export default {};
 }
 
 #nav {
-    padding: 30px;
+    padding: 40px;
 }
 
 #nav a {
@@ -30,6 +33,6 @@ export default {};
 }
 
 #nav a.router-link-exact-active {
-    color: #42b983;
+    color: #31b87b;
 }
 </style>
