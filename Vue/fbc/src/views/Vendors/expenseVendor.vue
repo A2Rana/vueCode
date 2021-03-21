@@ -2,7 +2,7 @@
     <h1>Expenses for Vendors</h1>
     <h2>Vendor Id : {{id}}</h2>
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" />
+    <Filter v-bind:msg="msg" v-bind:message="message" />
 </template>
 
 <script>
@@ -18,6 +18,7 @@ export default {
     data() {
         return {
             msg: 'Filter expenses by Vendor',
+            message:'Enter Vendor Id',
             data: [],
             tableHeaders: [],
             ctcdata: [],

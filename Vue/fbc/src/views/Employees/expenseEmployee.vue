@@ -1,8 +1,8 @@
 <template>
     <h1>Expenses for Employees</h1>
     <h2>Employee Id : {{id}}</h2>
-    <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" />
+    <Table v-if="show" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
+    <Filter v-bind:msg="msg" v-bind:message="message"/>
 </template>
 
 <script>
@@ -18,10 +18,12 @@ export default {
     data() {
         return {
             msg: 'Filter expenses by Employee',
+            message:'Enter Employee Id',
             data: [],
             tableHeaders: [],
             ctcdata: [],
-            id:Number
+            id:Number,
+            show:Boolean
         };
     },
     methods: {
@@ -33,10 +35,10 @@ export default {
                 const Data = await response.json();
                 this.ctcdata = await ctcresponse.json();
                 if (Data.length === 1 && Object.values(Data[0])[0] === null && this.ctcdata.length === 0) {
-                    return ['Data is not present'];
+                    return [];
                 }
                 if (!Data.length && !this.ctcdata.length) {
-                    return ['Data is not present!'];
+                    return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
                 return Data;
@@ -49,7 +51,7 @@ export default {
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);
         } else {
-            this.tableHeaders = ['Data is not present!'];
+            this.tableHeaders=[];
         }
     },
 };
@@ -58,5 +60,6 @@ export default {
 <style scoped>
     table{
         display: inline-block;
+        width: 61%;
     }
 </style>

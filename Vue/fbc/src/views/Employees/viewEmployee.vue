@@ -1,6 +1,6 @@
 <template>
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg"></Filter>
+    <Filter v-bind:msg="msg" v-bind:message="message"></Filter>
 </template>
 
 <script>
@@ -17,6 +17,7 @@ export default {
             data: [],
             tableHeaders: [],
             msg: 'Filter Employees by ID',
+            message:'Enter Employee Id'
         };
     },
     methods: {
