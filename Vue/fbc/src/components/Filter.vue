@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>{{ msg }} {{ valueID }}</h2>
-        <input v-model.lazy="inputID" :placeholder="message" />
+        <input v-model.lazy="inputID" :placeholder="message" type="number" required />
         <button @click="getID()" type="button">Go!</button>
     </div>
 </template>
@@ -22,6 +22,10 @@ export default {
     },
     methods: {
         async getID() {
+            if(this.inputID === ''){
+                window.alert('Please enter the Input ID!');
+            }
+
             if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                 this.mainParam = '/expense/year=';
             }
