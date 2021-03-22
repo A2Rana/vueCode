@@ -14,25 +14,28 @@ export default {
     props: {
         msg: String,
         message: String,
-        route:String
+        route: String,
     },
     data() {
         return {
             mainParam: '/id=',
             inputID: '',
-            inputYear:'',
-            showButton:false,
-            showYear:false
+            inputYear: '',
+            showButton: false,
+            showYear: false,
         };
     },
     methods: {
         async getID() {
-            if(this.inputID === ''){
+            if (this.inputID === '') {
                 window.alert('Please enter the Id...');
-            }else if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
+            } else if (
+                (this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') &&
+                this.inputYear === ''
+            ) {
                 window.alert('Please enter the Year...');
-            }else{
-                if(this.inputYear.length === 4 || this.inputYear === ''){
+            } else {
+                if (this.inputYear.length === 4 || this.inputYear === '') {
                     if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                         this.mainParam = '/expense/year=';
                     }
@@ -46,29 +49,27 @@ export default {
                         this.mainParam = '';
                     }
                     const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
-                    console.log('Param',param);
-                    this.$parent.$data.data = Object.values(await this.$parent.getData(param,this.inputYear));
+                    this.$parent.$data.data = Object.values(await this.$parent.getData(param, this.inputYear));
                     if (this.$parent.$data.data.length) {
                         this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
                     } else {
                         this.$parent.$data.tableHeaders = ['Data is not present!'];
                     }
-                    if(this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor'){
-                        this.showButton=true;
+                    if (this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor') {
+                        this.showButton = true;
                     }
                     this.inputID = '';
-                    this.inputYear='';
-                }
-                else{
+                    this.inputYear = '';
+                } else {
                     window.alert('Please enter the valid year...');
                 }
             }
         },
-        async back(){
+        async back() {
             this.$parent.$data.data = Object.values(await this.$parent.getData());
             this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
             this.showButton = false;
-        }
+        },
     },
 };
 </script>

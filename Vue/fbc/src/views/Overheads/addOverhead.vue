@@ -5,7 +5,7 @@
             <input type="text" id="fname" name="FacilityName" required="" placeholder="Facility Name.." />
             <br />
             <input type="text" id="lname" name="FacilityDescription" required="" placeholder="Facility Description.." />
-            <select style="display: none" name="FacilityType" value="O"></select>
+            <input style="display: none" name="FacilityType" value="O" />
             <br />
             <label>Do you want to add vendor for this Facility?</label>
             <select name="Choice" required="">
