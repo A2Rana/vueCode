@@ -30,16 +30,17 @@ export default {
     methods: {
         async getData(eID, year) {
             this.id=eID;
-            console.log('Year',year);
             const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
             if (response.ok) {
                 const Data = await response.json();
                 this.ctcdata = await ctcresponse.json();
                 if (Data.length === 1 && Object.values(Data[0])[0] === null && this.ctcdata.length === 0) {
+                    this.show=true;
                     return [];
                 }
                 if (!Data.length && !this.ctcdata.length) {
+                    this.show=true;
                     return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });

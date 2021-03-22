@@ -28,12 +28,13 @@ export default {
     methods: {
         async getID() {
             if(this.inputID === ''){
-                window.alert('Please enter the Id....');
+                window.alert('Please enter the Input ID!');
             }else{
-                if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
+                if(this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor'){
+                    if(this.inputYear===''){
                         window.alert('Please enter the Year!');
                 }
-                else{
+                }
                 if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                     this.mainParam = '/expense/year=';
                 }
@@ -48,18 +49,20 @@ export default {
                 }
                 const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
                 this.$parent.$data.data = Object.values(await this.$parent.getData(param,this.inputYear));
-                console.log(this.$parent.$data.data);
-                if (this.$parent.$data.data.length>0) {
+                console.log('data received',this.$parent.$data.data);
+                if (this.$parent.$data.data.length) {
+                    console.log('Data is there');
                     this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
                 } else {
+                    console.log('no data');
                     this.$parent.$data.tableHeaders = ['Data is not present!'];
+                    console.log('header ke niche');
                 }
                 if(this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor'){
                     this.showButton=true;
                 }
                 this.inputID = '';
                 this.inputYear='';
-                }
             }
         },
         async back(){
