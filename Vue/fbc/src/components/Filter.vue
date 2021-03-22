@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h2>{{ msg }} {{ valueID }}</h2>
+        <h2>{{ msg }}</h2>
         <input v-model.lazy="inputID" :placeholder="message" />
         <button @click="getID()" type="button">Go!</button>
+        <button v-if="showButton" @click="back()" type="button">Back</button>
     </div>
 </template>
 
@@ -17,7 +18,7 @@ export default {
         return {
             mainParam: '/id=',
             inputID: '',
-            valueID: '',
+            showButton:false,
         };
     },
     methods: {
@@ -41,9 +42,13 @@ export default {
             } else {
                 this.$parent.$data.tableHeaders = ['Data is not present!'];
             }
-            this.valueID = this.inputID;
             this.inputID = '';
         },
+        async back(){
+            this.$parent.$data.data = Object.values(await this.$parent.getData());
+            this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
+            this.showButton = false;
+        }
     },
 };
 </script>
