@@ -13,6 +13,7 @@ export default {
     props: {
         msg: String,
         message: String,
+        route:String
     },
     data() {
         return {
@@ -46,7 +47,9 @@ export default {
             } else {
                 this.$parent.$data.tableHeaders = ['Data is not present!'];
             }
-            this.showButton=true;
+            if(this.route != 'http://localhost:8080/expenseEmployee'){
+                this.showButton=true;
+            }
             this.inputID = '';
             }
         },

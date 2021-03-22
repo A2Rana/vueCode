@@ -59,8 +59,8 @@
             <input id="Office Number" type="number" name="Office" required="" placeholder="Your Office Number" /><br /><label for="Mobile Number" v-bind:class="{required : true}">
                 Mobile Number
             </label>
-            <input id="Mobile Number" type="number" name="Mobile" required="" placeholder="Your Mobile Number" /><br /><label for="LandLine Number" 
-                >LandLine Number
+            <input id="Mobile Number" type="number" name="Mobile" required="" placeholder="Your Mobile Number" /><br /><label for="LandLine Number">
+                LandLine Number
             </label>
             <input id="LandLine Number" type="number" name="LandLine" placeholder="Your LandLine Number" /><br /><label for="Bank Name" v-bind:class="{required : true}"
                 >Bank Name

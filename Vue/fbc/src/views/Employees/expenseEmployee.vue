@@ -1,8 +1,8 @@
 <template>
     <h1>Expenses for Employees</h1>
-    <h2>Employee Id : {{id}}</h2>
+    <h2 v-if="show">Employee Id : {{id}}</h2>
     <Table v-if="show" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" v-bind:message="message"/>
+    <Filter v-bind:msg="msg" v-bind:message="message" v-bind:route="route"/>
 </template>
 
 <script>
@@ -23,7 +23,8 @@ export default {
             tableHeaders: [],
             ctcdata: [],
             id:Number,
-            show:Boolean
+            show:false,
+            route:'http://localhost:8080/expenseEmployee'
         };
     },
     methods: {
@@ -41,13 +42,14 @@ export default {
                     return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
+                this.show=true;
                 return Data;
             }
             return console.log('HTTP-Error: ' + response.status);
         },
     },
     async mounted() {
-        this.data = Object.values(await this.getData(3));
+        //this.data = Object.values(await this.getData(3));
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);
         } else {
