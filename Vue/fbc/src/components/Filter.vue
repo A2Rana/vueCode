@@ -25,7 +25,7 @@ export default {
             if(this.inputID === ''){
                 window.alert('Please enter the Input ID!');
             }
-
+            else{
             if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                 this.mainParam = '/expense/year=';
             }
@@ -47,6 +47,7 @@ export default {
             }
             this.valueID = this.inputID;
             this.inputID = '';
+            }
         },
     },
 };
