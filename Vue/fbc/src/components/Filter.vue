@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>{{ msg }} {{ valueID }}</h2>
+        <h2>{{ msg }}</h2>
         <input v-model.lazy="inputID" :placeholder="message" type="number" required />
         <button @click="getID()" type="button">Go!</button>
         <button v-if="showButton" @click="back()" type="button">Back</button>
@@ -46,6 +46,7 @@ export default {
             } else {
                 this.$parent.$data.tableHeaders = ['Data is not present!'];
             }
+            this.showButton=true;
             this.inputID = '';
             }
         },
