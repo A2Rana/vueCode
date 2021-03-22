@@ -30,10 +30,8 @@ export default {
             if(this.inputID === ''){
                 window.alert('Please enter the Input ID!');
             }else{
-                if(this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor'){
-                        if(this.inputYear===''){
+                if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
                         window.alert('Please enter the Year!');
-                    }
                 }
                 if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                     this.mainParam = '/expense/year=';
