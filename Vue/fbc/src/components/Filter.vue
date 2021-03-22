@@ -33,30 +33,37 @@ export default {
                 if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
                         window.alert('Please enter the Year!');
                 }
-                if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
-                    this.mainParam = '/expense/year=';
+                else{
+                    if(this.inputYear.length === 4){
+                        if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
+                            this.mainParam = '/expense/year=';
+                        }
+                        if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Overhead') >= 0) {
+                            this.mainParam = '/year=';
+                        }
+                        if (this.msg.indexOf('Get') >= 0 && this.msg.indexOf('Benefits') >= 0) {
+                            this.mainParam = '/employee/';
+                        }
+                        if (this.msg.indexOf('expenses') >= 0 && this.msg.indexOf('Employee') >= 0) {
+                            this.mainParam = '';
+                        }
+                        const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
+                        this.$parent.$data.data = Object.values(await this.$parent.getData(param,this.inputYear));
+                        if (this.$parent.$data.data.length) {
+                            this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
+                        } else {
+                            this.$parent.$data.tableHeaders = ['Data is not present!'];
+                        }
+                        if(this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor'){
+                            this.showButton=true;
+                        }
+                        this.inputID = '';
+                        this.inputYear='';
+                    }
+                    else{
+                        window.alert('Please enter a valid year...');
+                    }
                 }
-                if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Overhead') >= 0) {
-                    this.mainParam = '/year=';
-                }
-                if (this.msg.indexOf('Get') >= 0 && this.msg.indexOf('Benefits') >= 0) {
-                    this.mainParam = '/employee/';
-                }
-                if (this.msg.indexOf('expenses') >= 0 && this.msg.indexOf('Employee') >= 0) {
-                    this.mainParam = '';
-                }
-                const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
-                this.$parent.$data.data = Object.values(await this.$parent.getData(param,this.inputYear));
-                if (this.$parent.$data.data.length) {
-                    this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
-                } else {
-                    this.$parent.$data.tableHeaders = ['Data is not present!'];
-                }
-                if(this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor'){
-                    this.showButton=true;
-                }
-                this.inputID = '';
-                this.inputYear='';
             }
         },
         async back(){
