@@ -28,7 +28,7 @@ export default {
     methods: {
         async getID() {
             if(this.inputID === ''){
-                window.alert('Please enter the Input ID!');
+                window.alert('Please enter the Id....');
             }else{
                 if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
                         window.alert('Please enter the Year!');

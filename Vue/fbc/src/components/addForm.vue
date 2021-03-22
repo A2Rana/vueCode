@@ -26,7 +26,7 @@
             <label for="Joining Date" v-bind:class="{required : true}"> Joining Date </label>
             <input id="Joining Date" type="date" name="JoiningDate"  placeholder="" required=""/><br />
             <label for="Leaving Date" >Leaving Date</label>
-            <input id="Leaving Date" type="date" name="LeavingDate" placeholder="" /><br />
+            <input id="Leaving Date" type="date" name="LeavingDate" placeholder=""  /><br />
             <label v-bind:class="{required : true}">Billable</label>
             <select id="Billable" required="" name="isBillable">
                 <option value="">--Select--</option>

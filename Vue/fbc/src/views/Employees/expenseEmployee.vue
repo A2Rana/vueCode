@@ -49,7 +49,6 @@ export default {
         },
     },
     async mounted() {
-        //this.data = Object.values(await this.getData(3));
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);
         } else {
