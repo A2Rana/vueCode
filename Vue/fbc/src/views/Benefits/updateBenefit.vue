@@ -46,6 +46,10 @@ export default {
             }
         },
         async getBenefitId() {
+            if(this.benefitID === ''){
+                window.alert('Please enter Benefit ID');
+            }
+            else{
             this.data = Object.values(await this.getData(this.updateUrl, this.benefitID))[0];
             console.log('Heeee', this.data[0]);
             if (this.data.length) {
@@ -56,6 +60,7 @@ export default {
             this.show = true;
             this.start = false;
             console.log(this.data);
+            }       
         },
     },
     async mounted() {

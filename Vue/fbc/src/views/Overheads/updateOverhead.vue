@@ -46,6 +46,10 @@ export default {
             }
         },
         async getoverheadId() {
+            if(this.overheadID === ''){
+                window.alert('Please enter the Overhead ID');
+            }
+            else{
             this.data = Object.values(await this.getData(this.updateUrl, this.overheadID))[0];
             console.log('Heeee', this.data[0]);
             if (this.data.length) {
@@ -56,6 +60,7 @@ export default {
             this.show = true;
             this.start = false;
             console.log(this.data);
+            }
         },
     },
     async mounted() {

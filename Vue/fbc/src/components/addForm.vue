@@ -1,5 +1,4 @@
 <template>
-    <keep-alive>
         <form method="POST" action="https://fbc.exitest.com/employee/add">
             <label for="First Name" v-bind:class="{required : true}">First Name</label>
             <input id="First Name" type="text" name="FirstName" required="" placeholder="Your First Name" /><br />
@@ -26,7 +25,7 @@
             <label for="Joining Date" v-bind:class="{required : true}"> Joining Date </label>
             <input id="Joining Date" type="date" name="JoiningDate"  placeholder="" required=""/><br />
             <label for="Leaving Date" >Leaving Date</label>
-            <input id="Leaving Date" type="date" name="LeavingDate" placeholder="" /><br />
+            <input id="Leaving Date" type="date" name="LeavingDate" placeholder=""  /><br />
             <label v-bind:class="{required : true}">Billable</label>
             <select id="Billable" required="" name="isBillable">
                 <option value="">--Select--</option>
@@ -59,8 +58,8 @@
             <input id="Office Number" type="number" name="Office" required="" placeholder="Your Office Number" /><br /><label for="Mobile Number" v-bind:class="{required : true}">
                 Mobile Number
             </label>
-            <input id="Mobile Number" type="number" name="Mobile" required="" placeholder="Your Mobile Number" /><br /><label for="LandLine Number" 
-                >LandLine Number
+            <input id="Mobile Number" type="number" name="Mobile" required="" placeholder="Your Mobile Number" /><br /><label for="LandLine Number">
+                LandLine Number
             </label>
             <input id="LandLine Number" type="number" name="LandLine" placeholder="Your LandLine Number" /><br /><label for="Bank Name" v-bind:class="{required : true}"
                 >Bank Name
@@ -83,7 +82,6 @@
             <br />
             <input type="submit" value="Submit" />
         </form>
-    </keep-alive>
 </template>
 
 <script>
