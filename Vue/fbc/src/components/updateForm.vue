@@ -24,10 +24,10 @@
             v-bind:value="data.LeavingDate === null ? null : data.LeavingDate.slice(0, 10)"
             style="margin-top: 4px"
         /><br />
-        <label id="Billable" v-bind:class="{required : true}">Billable</label>
-        <select id="Billable" v-bind:value="data.IsBillable === true ? 'No' : 'Yes'" required="">
-            <option value="0">No</option>
+        <label id="Billable">Billable</label>
+        <select id="Billable" v-bind:value="data.IsBillable === false ? '0' : '1'" required="">
             <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
         <br />
         <label for="Street Address 1" id="Street Address 1" v-bind:class="{required : true}">Street Address 1</label>
@@ -46,9 +46,9 @@
         <input id="Country" type="text" required="" v-bind:value="data.Country" style="margin-top: 4px" /><br />
         <label id="Is Address Permanent" v-bind:class="{required : true}">Is Address Permanent</label>
 
-        <select id="Is Address Permanent" v-bind:value="data.IsPermanent" required="">
-            <option value="0">No</option>
+        <select id="Is Address Permanent" v-bind:value="data.IsPermanent=== false ? '0'  : '1'"  required="">
             <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
 
         <label for="Office Number" id="Office Number" v-bind:class="{required : true}">Office Number</label>
