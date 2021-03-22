@@ -1,6 +1,8 @@
 <template>
     <h1>Please fill this form to add an employee...</h1>
-    <Form></Form>
+    <keep-alive>
+    <Form />
+    </keep-alive>
 </template>
 
 <script>
