@@ -28,7 +28,7 @@ export default {
         };
     },
     methods: {
-        async getData(eID, year = 2021) {
+        async getData(eID, year) {
             this.id=eID;
             const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
