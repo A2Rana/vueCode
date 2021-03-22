@@ -1,8 +1,8 @@
 <template>
     <h1>Expenses for Employees</h1>
-    <h2>Employee Id : {{id}}</h2>
+    <h2>Employee Id : {{ id }}</h2>
     <Table v-if="show" v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" v-bind:message="message"/>
+    <Filter v-bind:msg="msg" v-bind:message="message" />
 </template>
 
 <script>
@@ -18,17 +18,17 @@ export default {
     data() {
         return {
             msg: 'Filter expenses by Employee',
-            message:'Enter Employee Id',
+            message: 'Enter Employee Id',
             data: [],
             tableHeaders: [],
             ctcdata: [],
-            id:Number,
-            show:Boolean
+            id: Number,
+            show: Boolean,
         };
     },
     methods: {
         async getData(eID, year = 2021) {
-            this.id=eID;
+            this.id = eID;
             const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
             if (response.ok) {
@@ -40,7 +40,10 @@ export default {
                 if (!Data.length && !this.ctcdata.length) {
                     return [];
                 }
-                Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
+                Data.push({
+                    Name: Object.keys(this.ctcdata[0])[0],
+                    ExpenseAmount: Object.values(this.ctcdata[0])[0],
+                });
                 return Data;
             }
             return console.log('HTTP-Error: ' + response.status);
@@ -51,15 +54,15 @@ export default {
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);
         } else {
-            this.tableHeaders=[];
+            this.tableHeaders = [];
         }
     },
 };
 </script>
 
 <style scoped>
-    table{
-        display: inline-block;
-        width: 61%;
-    }
+table {
+    display: inline-block;
+    width: 61%;
+}
 </style>

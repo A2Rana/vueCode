@@ -22,31 +22,30 @@ export default {
     },
     methods: {
         async getID() {
-            if(this.inputID === ''){
+            if (this.inputID === '') {
                 window.alert('Please enter the Input ID!');
-            }
-            else{
-            if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
-                this.mainParam = '/expense/year=';
-            }
-            if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Overhead') >= 0) {
-                this.mainParam = '/year=';
-            }
-            if (this.msg.indexOf('Get') >= 0 && this.msg.indexOf('Benefits') >= 0) {
-                this.mainParam = '/employee/';
-            }
-            if (this.msg.indexOf('expenses') >= 0 && this.msg.indexOf('Employee') >= 0) {
-                this.mainParam = '';
-            }
-            const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
-            this.$parent.$data.data = Object.values(await this.$parent.getData(param));
-            if (this.$parent.$data.data.length) {
-                this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
             } else {
-                this.$parent.$data.tableHeaders = ['Data is not present!'];
-            }
-            this.valueID = this.inputID;
-            this.inputID = '';
+                if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
+                    this.mainParam = '/expense/year=';
+                }
+                if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Overhead') >= 0) {
+                    this.mainParam = '/year=';
+                }
+                if (this.msg.indexOf('Get') >= 0 && this.msg.indexOf('Benefits') >= 0) {
+                    this.mainParam = '/employee/';
+                }
+                if (this.msg.indexOf('expenses') >= 0 && this.msg.indexOf('Employee') >= 0) {
+                    this.mainParam = '';
+                }
+                const param = this.inputID ? this.mainParam + this.inputID : this.inputID;
+                this.$parent.$data.data = Object.values(await this.$parent.getData(param));
+                if (this.$parent.$data.data.length) {
+                    this.$parent.$data.tableHeaders = Object.keys(this.$parent.$data.data[0]);
+                } else {
+                    this.$parent.$data.tableHeaders = ['Data is not present!'];
+                }
+                this.valueID = this.inputID;
+                this.inputID = '';
             }
         },
     },
