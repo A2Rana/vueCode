@@ -1,5 +1,4 @@
 <template>
-    <keep-alive>
         <form method="POST" action="https://fbc.exitest.com/employee/add">
             <label for="First Name" v-bind:class="{required : true}">First Name</label>
             <input id="First Name" type="text" name="FirstName" required="" placeholder="Your First Name" /><br />
@@ -83,7 +82,6 @@
             <br />
             <input type="submit" value="Submit" />
         </form>
-    </keep-alive>
 </template>
 
 <script>

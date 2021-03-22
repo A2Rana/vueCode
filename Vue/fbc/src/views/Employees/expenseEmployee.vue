@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             msg: 'Filter expenses by Employee',
-            message:'Enter Employee Id',
+            message: 'Enter Employee Id',
             data: [],
             tableHeaders: [],
             ctcdata: [],
@@ -35,16 +35,17 @@ export default {
             if (response.ok) {
                 const Data = await response.json();
                 this.ctcdata = await ctcresponse.json();
+                this.show=true;
                 if (Data.length === 1 && Object.values(Data[0])[0] === null && this.ctcdata.length === 0) {
-                    this.show=true;
+
                     return [];
                 }
                 if (!Data.length && !this.ctcdata.length) {
-                    this.show=true;
+
                     return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
-                this.show=true;
+
                 return Data;
             }
             return console.log('HTTP-Error: ' + response.status);
@@ -54,15 +55,15 @@ export default {
         if (this.data.length) {
             this.tableHeaders = Object.keys(this.data[0]);
         } else {
-            this.tableHeaders=[];
+            this.tableHeaders = [];
         }
     },
 };
 </script>
 
 <style scoped>
-    table{
-        display: inline-block;
-        width: 61%;
-    }
+table {
+    display: inline-block;
+    width: 61%;
+}
 </style>
