@@ -29,10 +29,10 @@ export default {
         async getID() {
             if(this.inputID === ''){
                 window.alert('Please enter the Id...');
-            }else if(this.inputYear===''){
+            }else if((this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') && this.inputYear===''){
                 window.alert('Please enter the Year...');
             }else{
-                if(this.inputYear.length === 4){
+                if(this.inputYear.length === 4 || this.inputYear === ''){
                     if (this.msg.indexOf('year') >= 0 && this.msg.indexOf('Benefit') >= 0) {
                         this.mainParam = '/expense/year=';
                     }
