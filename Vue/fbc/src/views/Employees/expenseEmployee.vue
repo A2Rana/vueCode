@@ -35,16 +35,17 @@ export default {
             if (response.ok) {
                 const Data = await response.json();
                 this.ctcdata = await ctcresponse.json();
+                this.show=true;
                 if (Data.length === 1 && Object.values(Data[0])[0] === null && this.ctcdata.length === 0) {
-                    this.show=true;
+                    
                     return [];
                 }
                 if (!Data.length && !this.ctcdata.length) {
-                    this.show=true;
+                    
                     return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
-                this.show=true;
+                
                 return Data;
             }
             return console.log('HTTP-Error: ' + response.status);
