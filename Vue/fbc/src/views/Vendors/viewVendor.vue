@@ -1,6 +1,6 @@
 <template>
+  <Filter v-bind:msg="msg" v-bind:message="message"></Filter>
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
-    <Filter v-bind:msg="msg" v-bind:message="message"></Filter>
 </template>
 
 <script>

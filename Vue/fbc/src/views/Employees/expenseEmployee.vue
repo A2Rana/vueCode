@@ -30,7 +30,7 @@ export default {
     methods: {
         async getData(eID, year) {
             this.id=eID;
-            const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/expense`);
+            const response = await fetch(`http://localhost:3000/benefit/employee/${eID}/${year}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
             if (response.ok) {
                 const Data = await response.json();
@@ -64,6 +64,5 @@ export default {
 <style scoped>
 table {
     display: inline-block;
-    width: 61%;
 }
 </style>

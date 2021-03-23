@@ -39,20 +39,9 @@ td:first-child {
     color: #fb667a;
 }
 
-tr:hover {
-    background-color: #464a52;
-    -webkit-box-shadow: 0 6px 6px -6px #0e1119;
-    -moz-box-shadow: 0 6px 6px -6px #0e1119;
-    box-shadow: 0 6px 6px -6px #0e1119;
-}
-
 td:hover {
-    background-color: #fff842;
-    color: #403e10;
     font-weight: bold;
 
-    box-shadow: #7f7c21 -1px 1px, #7f7c21 -2px 2px, #7f7c21 -3px 3px, #7f7c21 -4px 4px, #7f7c21 -5px 5px, #7f7c21 -6px 6px;
-    transform: translate3d(6px, -6px, 0);
 
     transition-delay: 0s;
     transition-duration: 0.4s;

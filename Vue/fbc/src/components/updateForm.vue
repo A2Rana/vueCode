@@ -82,7 +82,7 @@
 export default {
     name: 'UpdateForm',
     props: {
-        data: Array,
+        data: Object,
     },
 };
 </script>
