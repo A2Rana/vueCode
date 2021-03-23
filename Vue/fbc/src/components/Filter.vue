@@ -30,7 +30,7 @@ export default {
             if (this.inputID === '') {
                 window.alert('Please enter the Id...');
             } else if (
-                (this.route == 'http://localhost:8080/expenseEmployee' || this.route == 'http://localhost:8080/expenseVendor') &&
+                (this.route == 'http://expensetracker.exitest.com/expenseEmployee' || this.route == 'http://expensetracker.exitest.com/expenseVendor') &&
                 this.inputYear === ''
             ) {
                 window.alert('Please enter the Year...');
@@ -55,7 +55,7 @@ export default {
                     } else {
                         this.$parent.$data.tableHeaders = ['Data is not present!'];
                     }
-                    if (this.route != 'http://localhost:8080/expenseEmployee' && this.route != 'http://localhost:8080/expenseVendor') {
+                    if (this.route != 'http://expensetracker.exitest.com/expenseEmployee' && this.route != 'http://expensetracker.exitest.com/expenseVendor') {
                         this.showButton = true;
                     }
                     this.inputID = '';

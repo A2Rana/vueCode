@@ -24,28 +24,25 @@ export default {
             ctcdata: [],
             id:Number,
             show:false,
-            route:'http://localhost:8080/expenseEmployee'
+            route:'http://expensetracker.exitest.com/expenseEmployee'
         };
     },
     methods: {
         async getData(eID, year) {
             this.id=eID;
-            const response = await fetch(`http://localhost:3000/benefit/employee/${eID}/${year}/expense`);
+            const response = await fetch(`https://fbc.exitest.com/benefit/employee/${eID}/${year}/expense`);
             const ctcresponse = await fetch(`https://fbc.exitest.com/employee/compensation/year=${year}/id=${eID}`);
             if (response.ok) {
                 const Data = await response.json();
                 this.ctcdata = await ctcresponse.json();
                 this.show=true;
                 if (Data.length === 1 && Object.values(Data[0])[0] === null && this.ctcdata.length === 0) {
-
                     return [];
                 }
                 if (!Data.length && !this.ctcdata.length) {
-
                     return [];
                 }
                 Data.push({ Name: Object.keys(this.ctcdata[0])[0], ExpenseAmount: Object.values(this.ctcdata[0])[0] });
-
                 return Data;
             }
             return console.log('HTTP-Error: ' + response.status);

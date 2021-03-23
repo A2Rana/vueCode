@@ -1,12 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
     {
-        path: '/login',
-        name: 'Login',
-        component: () => import('../components/Login.vue'),
-        meta: { requiresAuth: true },
-    },
-    {
         path: '/',
         name: 'Home',
         component: () => import('../views/Home.vue'),
@@ -135,18 +129,5 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
 });
-
-// router.beforeEach((to, from, next) => {
-//     if (to.meta.requiresAuth) {
-//         if (store.allowuser === null) {
-//             store.allowuser = true;
-//             next({
-//                 name: 'Login',
-//             });
-//         }
-//     } else {
-//         next();
-//     }
-// });
 
 export default router;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form method="POST" action="http://localhost:3000/benefit/update">
+        <form method="POST" action="https://fbc.exitest.com/benefit/update">
             <label for="FaciltyId">Facility ID</label>
             <input type="text" name="FacilityId" v-bind:value="data.FacilityID" required readonly />
             <label for="FacilityName">Facility Name</label>

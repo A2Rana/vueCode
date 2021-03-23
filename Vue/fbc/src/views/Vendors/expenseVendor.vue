@@ -25,7 +25,7 @@ export default {
             id:Number,
             year:Number,
             show:false,
-            route:'http://localhost:8080/expenseVendor'
+            route:'http://expensetracker.exitest.com/expenseVendor'
         };
     },
     methods: {

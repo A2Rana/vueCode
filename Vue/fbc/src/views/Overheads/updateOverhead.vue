@@ -31,7 +31,7 @@ export default {
             tableHeaders: [],
             start: true,
             show: false,
-            updateUrl: 'http://localhost:3000/benefit/getData/id=',
+            updateUrl: 'https://fbc.exitest.com/benefit/getData/id=',
             url: 'https://fbc.exitest.com/overhead',
         };
     },

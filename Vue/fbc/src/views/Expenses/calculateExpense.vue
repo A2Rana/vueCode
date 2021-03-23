@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         async getData(year, per) {
-            const response = await fetch(`http://localhost:3000/employee/expenseDetails/year=${year}/profit=${per}`);
+            const response = await fetch(`https://fbc.exitest.com/employee/expenseDetails/year=${year}/profit=${per}`);
             if (response.ok) {
                 const data = await response.json();
                 return Object.values(data);
