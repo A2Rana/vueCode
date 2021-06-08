@@ -75,7 +75,12 @@ input[type='submit'] {
     margin-bottom: 40px;
 }
 body {
-    background: #eff8ff;
+    background: radial-gradient(white, rgb(235, 223, 223), rgb(240, 168, 180));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-image: url('https://images.pexels.com/photos/4475523/pexels-photo-4475523.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+    background-position: center;
     height: 100vh;
     width: 100vw;
     font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
@@ -88,7 +93,8 @@ body {
 }
 
 h1 {
-    color: #3d4852;
+    background: radial-gradient(white, lightblue);
+    color:#154c79;
 }
 
 ul {

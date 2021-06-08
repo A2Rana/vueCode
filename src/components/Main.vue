@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h1>{{ msg }}</h1>
+    <header>{{ msg }}</header>
   </div>
 </template>
 
@@ -15,6 +15,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+header {
+  padding: 75px 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+}
+header {
+  position: relative;
+  padding: 56px;
+  overflow: hidden;
+}
+header {
+  font-size: 56px;
+  font-weight: 600;
+  margin: 5px 0 20px;
+  word-spacing: 3px;
+  color: #fff;
+}
+
 h3 {
   margin: 40px 0 0;
 }

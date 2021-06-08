@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 <template>
     <Filter v-bind:msg="msg" v-bind:message="message" />
     <Table v-bind:tableHeaders="tableHeaders" v-bind:data="data"></Table>
